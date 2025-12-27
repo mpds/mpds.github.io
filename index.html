@@ -153,6 +153,12 @@
             }, 200);
         }
 
+        function handleTouchLeave() {
+            flipTimeout = setTimeout(() => {
+                flipContainer.classList.remove('flipped');
+            }, 1000);
+        }
+
         flipContainer.addEventListener('mouseenter', handleFlipEnter);
         flipContainer.addEventListener('mouseleave', handleFlipLeave);
 
@@ -162,8 +168,8 @@
             passive: true
         });
 
-        flipContainer.addEventListener('touchend', handleFlipLeave);
-        flipContainer.addEventListener('touchcancel', handleFlipLeave);
+        flipContainer.addEventListener('touchend', handleTouchLeave);
+        flipContainer.addEventListener('touchcancel', handleTouchLeave);
 
         // hint
         setTimeout(() => {
