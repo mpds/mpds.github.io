@@ -159,17 +159,32 @@
             }, 1000);
         }
 
-        flipContainer.addEventListener('mouseenter', handleFlipEnter);
-        flipContainer.addEventListener('mouseleave', handleFlipLeave);
+        let isTouchInteraction = false;
+        let touchFlagTimeout;
+
+        flipContainer.addEventListener('mouseenter', () => {
+            if (!isTouchInteraction) handleFlipEnter();
+        });
+        flipContainer.addEventListener('mouseleave', () => {
+            if (!isTouchInteraction) handleFlipLeave();
+        });
 
         flipContainer.addEventListener('touchstart', (e) => {
+            isTouchInteraction = true;
+            clearTimeout(touchFlagTimeout);
             handleFlipEnter();
         }, {
             passive: true
         });
 
-        flipContainer.addEventListener('touchend', handleTouchLeave);
-        flipContainer.addEventListener('touchcancel', handleTouchLeave);
+        flipContainer.addEventListener('touchend', () => {
+            handleTouchLeave();
+            touchFlagTimeout = setTimeout(() => { isTouchInteraction = false; }, 1500);
+        });
+        flipContainer.addEventListener('touchcancel', () => {
+            handleTouchLeave();
+            touchFlagTimeout = setTimeout(() => { isTouchInteraction = false; }, 1500);
+        });
 
         // hint
         setTimeout(() => {
