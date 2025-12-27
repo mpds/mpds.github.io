@@ -104,7 +104,6 @@ header {
     perspective: 1000px;
     width: 135px;
     height: 135px;
-    justify-self: center;
     margin-block-end: 1rem;
     cursor: pointer;
 }
