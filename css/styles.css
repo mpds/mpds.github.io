@@ -177,12 +177,12 @@ header {
 }
 
 #typewriter {
-    font-family: monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-style: normal;
 }
 
 #cursor {
-    font-family: monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-style: normal;
     font-weight: bold;
     animation: blink 0.5s step-end infinite;
@@ -203,12 +203,14 @@ header {
 .content-section {
     display: grid;
 
+
     &> :first-child {
         align-self: start;
         text-align: left;
-        font-family: monospace;
+        font-family: 'JetBrains Mono', monospace;
         font-size: 0.9rem;
-        font-weight: 600;
+        font-weight: 400;
+        color: #777;
     }
 
     @media (width > 600px) {
